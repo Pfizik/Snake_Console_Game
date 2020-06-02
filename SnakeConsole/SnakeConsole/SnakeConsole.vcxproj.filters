@@ -32,5 +32,11 @@
     <ClInclude Include="game_status.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="startup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fruitspawner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

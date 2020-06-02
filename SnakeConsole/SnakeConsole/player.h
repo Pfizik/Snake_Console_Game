@@ -3,4 +3,4 @@ struct PlayerLocation
 {
 	int x;
 	int y;
-};
+}player;

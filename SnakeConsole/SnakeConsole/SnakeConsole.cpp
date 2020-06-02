@@ -1,44 +1,124 @@
-// SnakeConsole.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <conio.h>
+#include <Windows.h>
 #include "fruit.h"
 #include "map.h"
 #include "player.h"
 #include "game_status.h"
+#include "fruitspawner.h"
+#include "startup.h"
+using namespace std;
+enum eDirection { STOP=0, LEFT, RIGHT, UP, DOWN};
+eDirection dir;
+
+void Draw()
+{
+	system("cls");
+
+	for (int i = 0; i < map.width; i++)
+	{
+		cout << "#";
+	}
+
+	cout << endl;
+
+	for (int i = 0; i < map.height; i++)
+	{
+		for (int g = 0; g < map.width; g++)
+		{
+			if (g==0 or g==(map.width-1))
+			{
+				cout << "#";
+			}
+			else if (i==player.y and g==player.x)
+			{
+				cout << "O";
+			}
+			else if (i==fruit.y and g==fruit.x)
+			{
+				cout << "F";
+			}
+			else
+			{
+				cout << " ";
+			}
+		}
+		cout << endl;
+	}
+
+	
+
+	for (int i = 0; i < map.width; i++)
+	{
+		cout << "#";
+	}
+
+	cout << endl;
+}
 
 void Input()
 {
-
+	if (_kbhit())
+	{
+		switch (_getch())
+		{
+		case 'a':
+			dir = LEFT;
+			break;
+		case 'd':
+			dir = RIGHT;
+			break;
+		case 'w':
+			dir = UP;
+			break;
+		case 's':
+			dir = DOWN;
+			break;
+		case 27:
+			gamestatus = false;
+			break;
+		}
+	}
 }
 
 void Logic()
 {
+	switch (dir)
+	{
+	case LEFT:
+		player.x--;
+		break;
+	case RIGHT:
+		player.x++;
+		break;
+	case UP:
+		player.y--;
+		break;
+	case DOWN:
+		player.y++;
+		break;
+	default:
+		break;
+	}
 
-}
-
-void Draw()
-{
-
+	if (player.x > map.width or player.x<0 or player.y>map.height or player.y < 0)
+	{
+		gamestatus = false;
+	}
+	if (player.x == fruit.x and player.y == fruit.y)
+	{
+		FruitSpawner();
+	}
 }
 
 int main()
 {
+	Startup();
 	while (gamestatus)
 	{
+		Draw();
 		Input();
 		Logic();
-		Draw();
+		Sleep(100);
 	}
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

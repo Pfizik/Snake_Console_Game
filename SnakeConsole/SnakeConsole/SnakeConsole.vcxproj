@@ -151,9 +151,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fruit.h" />
+    <ClInclude Include="fruitspawner.h" />
     <ClInclude Include="game_status.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="startup.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

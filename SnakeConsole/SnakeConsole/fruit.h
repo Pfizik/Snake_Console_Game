@@ -3,4 +3,4 @@ struct FruitLocation
 {
 	int x;
 	int y;
-};
+}fruit;

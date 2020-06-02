@@ -1,6 +1,6 @@
 #pragma once
 struct MapSize
 {
-	const int x = 30;
-	const int y = 30;
-};
+	const int width = 30;
+	const int height = 15;
+}map;
