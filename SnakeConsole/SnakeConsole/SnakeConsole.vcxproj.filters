@@ -38,5 +38,8 @@
     <ClInclude Include="fruitspawner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="tail.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

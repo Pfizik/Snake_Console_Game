@@ -10,6 +10,15 @@
 void FruitSpawner()
 {
 	srand(time(0));
-	fruit.x = rand() % map.width-2;
-	fruit.y = rand() % map.height-2;
+	int x = rand() %map.width-2;
+	int y = rand() %map.height-2;
+	if (x > 0 and y > 0)
+	{
+		fruit.x = x;
+		fruit.y = y;
+	}
+	else
+	{
+		FruitSpawner();
+	}
 }
